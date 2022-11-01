@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Test Pizza",
+    "weight": 350.0,
+    "price": 205.99,
+    "components": ["sausage", "cheese", "olives"]
+  },
+  {
+    "name": "Test Pizza 2",
+    "weight": 300.0,
+    "price": 250.99,
+    "components": ["chicken", "cheese", "olives", "mushrooms"]
+  },
+  {
+    "name": "Margherita",
+    "weight": 320.0,
+    "price": 229.99,
+    "components": ["Cheese", "Black Olive", "Crisp Capsicum", "Paneer", "Grilled Mushroom", "Golden  Corn",
+      "Fresh Tomato"]
+  },
+  {
+    "name": "Neapolitan Pizza",
+    "weight": 290.0,
+    "price": 259.0,
+    "components": ["tomatoes ", "mozzarella"]
+  },
+  {
+    "name": "Greek Pizza",
+    "weight": 310.0,
+    "price": 240.90,
+    "components": ["feta", "spinach", "olives", "olive oil"]
+  },
+  {
+    "name": "Mushrooms",
+    "weight": 333.0,
+    "price": 280.90,
+    "components": ["cheese", "mushrooms", "tomato", "tomato sauce"]
+  },
+  {
+    "name": "Tomatoes",
+    "weight": 314.0,
+    "price": 240.0,
+    "components": ["cheese", "tomato", "tomato sauce", "chicken"]
+  },
+  {
+    "name": "Bacon",
+    "weight": 314.0,
+    "price": 240.0,
+    "components": ["cheese", "tomato", "tomato sauce", "bacon"]
+  }
+]
