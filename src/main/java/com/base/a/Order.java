@@ -5,7 +5,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Order {
+    /**
+     * id - unique number that identify order
+     * */
     private int id;
+    /**
+     * Pizza - object
+     * Integer - count
+     * */
     private Map<Pizza, Integer> pizzas;
 
     public Order(int id, Map<Pizza, Integer> pizzas) {

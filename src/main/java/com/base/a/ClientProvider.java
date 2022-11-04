@@ -1,5 +1,7 @@
 package com.base.a;
 
+import com.base.a.Parser.JsonNameFileParser;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,46 +14,11 @@ public class ClientProvider {
     private ClientAcceptor clientAcceptor;
 
     private void fillNamesPool() {
-        namesPool = new ArrayList<String>();
-
-        namesPool.add("Ivan");
-        namesPool.add("Petro");
-        namesPool.add("Serhii");
-        namesPool.add("Nazar");
-        namesPool.add("Vitalik");
-        namesPool.add("Volodymyr");
-        namesPool.add("Danylo");
-        namesPool.add("Andrii");
-        namesPool.add("Myhailo");
-        namesPool.add("Vlad");
-        namesPool.add("Olexandr");
-        namesPool.add("Marek");
-        namesPool.add("Tosik");
-        namesPool.add("Anatolii");
-        namesPool.add("Tolik");
-        namesPool.add("Garrik");
-        namesPool.add("Jamal"); // :)
-
-        namesPool.add("Chrystyna");
-        namesPool.add("Yana");
-        namesPool.add("Veronika");
-        namesPool.add("Viktoria");
-        namesPool.add("Maria");
-        namesPool.add("Galina");
-        namesPool.add("Vira");
-        namesPool.add("Mariana");
-        namesPool.add("Lilia");
-        namesPool.add("Jamala");
-        namesPool.add("Emilia");
-        namesPool.add("Nadia");
-        namesPool.add("Oksana");
-        namesPool.add("Tetiana");
-        namesPool.add("Ivanna");
-        namesPool.add("Iana");
+        namesPool = JsonNameFileParser.parse(AppConfig.jsonNamesPath);
     }
+
     private String getRandomName() {
         Random random = new Random();
-
         return namesPool.get(random.nextInt(namesPool.size()));
     }
 
@@ -64,7 +31,6 @@ public class ClientProvider {
 
     public Client generateClient() {
         var order = orderGenerator.createRandomOrder();
-
         return new Client(order, getRandomName(), LocalDateTime.now());
     }
 

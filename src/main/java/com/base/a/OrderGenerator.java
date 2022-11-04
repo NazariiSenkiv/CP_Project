@@ -1,5 +1,6 @@
 package com.base.a;
 
+import java.time.LocalTime;
 import java.util.*;
 
 public class OrderGenerator {
@@ -15,38 +16,44 @@ public class OrderGenerator {
         return pizzaList.get(rand.nextInt(pizzaList.size()));
     }
 
-    // generates list of random pizzas.
-    // if menu contains fewer pizza types, than required, throws RuntimeException
-    private List<Pizza> getRandomPizzaList(int count) {
-
+    /** generates list of random pizzas.
+     * if menu contains fewer pizza types,
+     * than required,
+     * throws RuntimeException
+     */
+    private List<Pizza> getRandomPizzaList(int count) throws RuntimeException {
         int menuSize = Menu.getInstance().getPizzaCount();
         var pizzasList = Menu.getInstance().getPizzas();
 
         if (count > menuSize) {
             throw new RuntimeException("Passed pizzas count bigger than existing in menu!(OrderGenerator.getRandomPizzaList)");
         }
-        else if (count == menuSize) {
+
+        if (count == menuSize) {
             return pizzasList;
         }
-        else {
-            var rand = new Random();
-            var randomSelectedPizzas = new ArrayList<Pizza>();
 
-            for (int i = 0; i < count; i++) {
-                var pizza = getRandomPizza(pizzasList);
-                pizzasList.remove(pizza);
+        var rand = new Random();
+        var randomSelectedPizzas = new ArrayList<Pizza>();
 
-                randomSelectedPizzas.add(pizza);
-            }
+        for (int i = 0; i < count; i++) {
+            var pizza = getRandomPizza(pizzasList);
+            pizzasList.remove(pizza);
 
-            return randomSelectedPizzas;
+            randomSelectedPizzas.add(pizza);
         }
+
+        return randomSelectedPizzas;
     }
 
+    /**
+     * Creates an order with one type of pizza with count from 1 to 2
+     * @return Order with incremented id
+     */
     public Order createSimpleOrder() {
         var randomPizza = getRandomPizza();
 
-        Random random = new Random();
+        Random random = new Random(LocalTime.now().getNano());
         int pizzasCount = random.nextInt(1, 3);
 
         var pizzaMap = new HashMap<Pizza, Integer>();
@@ -54,8 +61,12 @@ public class OrderGenerator {
 
         return new Order(nextId++, pizzaMap);
     }
-    public Order createComplexOrder() {
-        Random random = new Random();
+    /**
+     * Creates an order with random types of pizza with count from 1 to 3
+     * @return Order with incremented id
+     */
+    public Order createComplexOrder() throws RuntimeException {
+        Random random = new Random(LocalTime.now().getNano());
 
         var randomPizzaList = getRandomPizzaList(random.nextInt(2, 5));
 
@@ -66,8 +77,12 @@ public class OrderGenerator {
 
         return new Order(nextId++, pizzaMap);
     }
+    /**
+     * Creates an order with random types of pizza with count from 2 to 7
+     * @return Order with incremented id
+     */
     public Order createSuperComplexOrder() {
-        Random random = new Random();
+        Random random = new Random(LocalTime.now().getNano());
 
         var randomPizzaList = getRandomPizzaList(random.nextInt(4, 8));
 
@@ -79,20 +94,26 @@ public class OrderGenerator {
         return new Order(nextId++, pizzaMap);
     }
 
+    /**
+     * Creates random order
+     * @return with probability of 60% creates simple order;
+     * with probability of 30% creates complex order;
+     * with probability of 10% creates super complex order
+     * */
     public Order createRandomOrder() {
-        Random random = new Random();
+        Random random = new Random(LocalTime.now().getNano());
         int probability = random.nextInt(101);
 
         Order order = null;
 
-        if (probability < 60) {             // probability 60%
-            order = createSimpleOrder();
-        } else if (probability < 90) {      // probability 30%
-            order = createComplexOrder();
-        } else {                            // probability 10%
-            order = createSuperComplexOrder();
+        if (probability < 60) { // probability 60%
+            return createSimpleOrder();
         }
 
-        return order;
+        if (probability < 90) { // probability 30%
+            return createComplexOrder();
+        }
+
+        return createSuperComplexOrder(); // probability 10%
     }
 }

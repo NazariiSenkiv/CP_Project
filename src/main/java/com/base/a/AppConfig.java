@@ -9,6 +9,7 @@ public class AppConfig {
     private static volatile AppConfig instance;
 
     public static String jsonPizzasPath = "pizzas.json";
+    public static String jsonNamesPath = "names.json";
     public static int paydesksCount = 4;
     public static int chiefsCount = 4;
     public static int orderTimeInSeconds = 16;
