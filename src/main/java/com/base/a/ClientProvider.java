@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * ClientProvider is a class that generates random client
+ * and provides it to the next system that is passed in constructor
+ * */
 public class ClientProvider {
     private OrderGenerator orderGenerator;
     private List<String> namesPool;
     private ClientAcceptor clientAcceptor;
-
-    private void fillNamesPool() {
-        namesPool = JsonNameFileParser.parse(AppConfig.jsonNamesPath);
-    }
 
     private String getRandomName() {
         Random random = new Random();
@@ -26,7 +26,7 @@ public class ClientProvider {
         orderGenerator = new OrderGenerator();
         this.clientAcceptor = clientAcceptor;
 
-        fillNamesPool();
+        namesPool = JsonNameFileParser.parse(AppConfig.jsonNamesPath);
     }
 
     public Client generateClient() {
@@ -34,13 +34,11 @@ public class ClientProvider {
         return new Client(order, getRandomName(), LocalDateTime.now());
     }
 
+    /**
+     * Provides the client to the next system
+     * */
     public void provideClient() {
         var client = generateClient();
-
-        // TODO: remove this
-        System.out.println("["+ LocalTime.now() +"]"+"Spawned client: " + client.getName()
-        + ", order: " + client.getOrder());
-
         clientAcceptor.acceptClient(client);
     }
 }

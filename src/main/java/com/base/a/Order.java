@@ -24,6 +24,9 @@ public class Order {
         return id;
     }
 
+    /**
+     * Creates a copy of pizza map
+     * */
     public Map<Pizza, Integer> getPizzas() {
         return new HashMap<Pizza, Integer>(pizzas);
     }

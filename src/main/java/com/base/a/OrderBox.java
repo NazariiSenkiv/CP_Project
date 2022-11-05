@@ -23,9 +23,9 @@ public class OrderBox {
 
         if (foundPizzaEntry == null) {
             return false;
-        } else {
-            return foundPizzaEntry.getValue() > 0;
         }
+
+        return foundPizzaEntry.getValue() > 0;
     }
 
     public void addPizza(Pizza pizza) {

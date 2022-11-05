@@ -22,7 +22,9 @@ public class Menu {
         return pizzas.size();
     }
 
-    // returns copy of pizza list
+    /**
+     * Returns a copy of the pizza list
+     * */
     public List<Pizza> getPizzas() {
         return new ArrayList<>(pizzas);
     }

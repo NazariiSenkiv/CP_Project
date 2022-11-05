@@ -50,7 +50,6 @@ public class Kitchen {
 
         if (firstAvailableTask != null) {
             tasks.remove(firstAvailableTask);
-
             chief.setTask(firstAvailableTask);
         }
     }

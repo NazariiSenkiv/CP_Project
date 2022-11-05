@@ -1,6 +1,5 @@
 package com.base.a;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Paydesk {
@@ -14,37 +13,44 @@ public class Paydesk {
         this.paydeskManager = paydeskManager;
     }
 
+    /**
+     * Sends a message to the paydesk manager to serve other client
+     * */
     public void notifyPaydeskManager() {
         paydeskManager.update(this);
     }
 
+    /**
+     * Receives another client to be served
+     * */
     public synchronized void serveClient(Client servingClient) {
         if (servingClient == null) {
             return;
         }
 
         LocalTime orderingStartTime = LocalTime.now();
-        // TODO: remove
-        System.out.println("["+number+"]Accepted client: " + servingClient.getName()+", time:"+ orderingStartTime);
 
         this.servingClient = servingClient;
         orderingEndTime = orderingStartTime.plusSeconds(AppConfig.orderTimeInSeconds); //TODO: add random deviation
     }
 
+    /**
+     * Controls paydesk in the thread
+     * and checks if the client is served
+     * */
     public synchronized void update() {
         if (LocalTime.now().compareTo(orderingEndTime) >= 0) {
             if (servingClient != null) {
-                //TODO: remove
-                System.out.println("["+number+"]Released client: " + servingClient.getName()+", time:"+ LocalTime.now());
-                //
-
                 paydeskManager.sendClientToWaitingRoom(servingClient);
-
                 paydeskManager.sendOrderToKitchen(servingClient.getOrder());
 
                 servingClient = null;
             }
             notifyPaydeskManager();
         }
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

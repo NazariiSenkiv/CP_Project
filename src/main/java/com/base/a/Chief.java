@@ -1,11 +1,15 @@
 package com.base.a;
 
+import com.base.a.Parser.JsonNameFileParser;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Chief {
+    private static List<String> chiefNamesPool;
+
     private String name;
     private Kitchen kitchen;
     private Task currentTask;
@@ -15,7 +19,8 @@ public class Chief {
     public Chief(Kitchen kitchen) {
         this.kitchen = kitchen;
 
-        fillChiefNamesPool();
+        chiefNamesPool = JsonNameFileParser.parse("chiefNames.json");
+
         Random random = new Random();
         name = chiefNamesPool.get(random.nextInt(chiefNamesPool.size()));
     }
@@ -24,11 +29,6 @@ public class Chief {
         if (LocalTime.now().compareTo(taskEndTime) >= 0) {
             if (currentTask != null) {
                 currentTask.complete();
-
-                // TODO: remove
-                System.out.println("Chief " + name + " completed task " + currentTask.getName() + "["+LocalTime.now()+"]");
-                //
-
                 currentTask = null;
             }
 
@@ -46,28 +46,8 @@ public class Chief {
         }
 
         var now = LocalTime.now();
-        // TODO: remove
-        System.out.println("Chief " + name + " took task " + task.getName());
-        //
 
         currentTask = task;
         taskEndTime = now.plusSeconds(task.getSecondsToComplete());
-    }
-
-    private static List<String> chiefNamesPool;
-
-    private void fillChiefNamesPool() {
-        chiefNamesPool = new ArrayList<>();
-
-        chiefNamesPool.add("Sanji");
-        chiefNamesPool.add("Marchello");
-        chiefNamesPool.add("Giorno");
-        chiefNamesPool.add("Francisk");
-        chiefNamesPool.add("Soma");
-        chiefNamesPool.add("Petro");
-        chiefNamesPool.add("Pavlo");
-        chiefNamesPool.add("Andrii");
-        chiefNamesPool.add("Mia");
-        chiefNamesPool.add("Mario");
     }
 }

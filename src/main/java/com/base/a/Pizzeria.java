@@ -1,5 +1,9 @@
 package com.base.a;
 
+/**
+ * Pizzeria is a class that is the
+ * communication layer between the subsystems
+ * */
 public class Pizzeria implements ClientAcceptor {
     private final PaydeskManager paydeskManager;
     private KitchenFacade kitchenFacade;

@@ -1,12 +1,13 @@
 package com.base.a;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.stream.Collectors;
 
+/**
+ * PaydeskManager is a class that controls
+ * all paydesks in the application. It sends
+ * client to waiting rooms, orders to kitchen and updates the states of the paydesks.
+ * */
 public class PaydeskManager {
     private Pizzeria pizzeria;
     private final List<Paydesk> paydesks;
@@ -27,7 +28,7 @@ public class PaydeskManager {
         try {
             waitingClients.put(client);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);//TODO: log error
+            System.out.println("Client isn't added");
         }
     }
 
@@ -37,21 +38,11 @@ public class PaydeskManager {
                 paydesk.serveClient(waitingClients.take());
             }
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);//TODO: log error
+            System.out.println("Paydesk updating error");
         }
     }
 
-    // TODO: remove
-    private LocalTime lastOutputTime = LocalTime.now();
-    //
     public void updatePaydesks() {
-        // TODO: remove
-        if (ChronoUnit.SECONDS.between(lastOutputTime, LocalTime.now()) >= 1) {
-            lastOutputTime = LocalTime.now();
-            System.out.println("Waiting queue: " + waitingClients.stream().map(Client::getName).collect(Collectors.joining(", ")));
-        }
-        //
-
         for (var paydesk : paydesks) {
             paydesk.update();
         }

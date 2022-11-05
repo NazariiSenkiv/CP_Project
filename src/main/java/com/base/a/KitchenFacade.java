@@ -1,5 +1,8 @@
 package com.base.a;
 
+/**
+ * Communication layer between kitchen and pizzeria
+ * */
 public class KitchenFacade {
 
     private Pizzeria pizzeria;
@@ -15,6 +18,10 @@ public class KitchenFacade {
         kitchen = new Kitchen(this);
     }
 
+    /**
+     * Sends a message that the order is finished,
+     * and we can free our client
+     * */
     public void sendCompletedOrder(int id) {
         pizzeria.acceptCompletedOrder(id);
     }
