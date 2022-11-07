@@ -1,12 +1,11 @@
 package com.base.a.Parser;
 
-import com.base.a.Pizza;
+import com.base.a.Kitchen.Pizza;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

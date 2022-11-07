@@ -1,10 +1,10 @@
-package com.base.a;
+package com.base.a.Client;
 
+import com.base.a.AppCore.AppConfig;
+import com.base.a.Order.OrderGenerator;
 import com.base.a.Parser.JsonNameFileParser;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 

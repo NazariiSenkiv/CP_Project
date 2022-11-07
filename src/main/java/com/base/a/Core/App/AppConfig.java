@@ -1,13 +1,7 @@
-package com.base.a;
-
-enum ChiefWorkMode {
-    SINGLE,
-    CONVEYOR
-}
+package com.base.a.AppCore;
 
 public class AppConfig {
     private static volatile AppConfig instance;
-
     public static String jsonPizzasPath = "pizzas.json";
     public static String jsonNamesPath = "names.json";
     public static int paydesksCount = 4;
@@ -17,6 +11,7 @@ public class AppConfig {
     public static int itemCookingMinTime = 2;
 
     public static ChiefWorkMode chiefWorkMode = ChiefWorkMode.CONVEYOR;
+
     private AppConfig() {
 
     }

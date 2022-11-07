@@ -1,4 +1,10 @@
-package com.base.a;
+package com.base.a.Kitchen;
+
+import com.base.a.Client.Client;
+import com.base.a.Client.ClientAcceptor;
+import com.base.a.Order.Order;
+import com.base.a.AppCore.PaydeskManager;
+import com.base.a.AppCore.WaitingRoom;
 
 /**
  * Pizzeria is a class that is the

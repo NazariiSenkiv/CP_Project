@@ -1,6 +1,9 @@
-package com.base.a;
+package com.base.a.AppCore;
 
-import java.util.ArrayList;
+import com.base.a.Kitchen.Kitchen;
+import com.base.a.Kitchen.Pizza;
+import com.base.a.Kitchen.PizzaTasksDecomposer;
+
 import java.util.List;
 
 public class MultipleTasksDecomposer extends PizzaTasksDecomposer {

@@ -1,4 +1,8 @@
-package com.base.a;
+package com.base.a.Kitchen;
+
+import com.base.a.Order.Order;
+import com.base.a.Order.OrdersCollector;
+import com.base.a.Order.OrdersUnpacker;
 
 /**
  * Communication layer between kitchen and pizzeria

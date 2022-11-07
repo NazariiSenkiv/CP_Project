@@ -1,4 +1,8 @@
-package com.base.a;
+package com.base.a.AppCore;
+
+import com.base.a.Client.Client;
+import com.base.a.Kitchen.Pizzeria;
+import com.base.a.Order.Order;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;

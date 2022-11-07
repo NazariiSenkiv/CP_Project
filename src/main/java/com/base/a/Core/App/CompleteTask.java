@@ -1,4 +1,7 @@
-package com.base.a;
+package com.base.a.AppCore;
+
+import com.base.a.Kitchen.Kitchen;
+import com.base.a.Kitchen.Pizza;
 
 import java.util.List;
 

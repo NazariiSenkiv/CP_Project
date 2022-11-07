@@ -1,4 +1,6 @@
-package com.base.a;
+package com.base.a.AppCore;
+
+import com.base.a.Client.Client;
 
 import java.util.ArrayList;
 import java.util.Collections;

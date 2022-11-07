@@ -1,4 +1,4 @@
-package com.base.a;
+package com.base.a.AppCore;
 
 public abstract class Task {
     private String name;

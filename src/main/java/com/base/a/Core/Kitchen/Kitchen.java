@@ -1,9 +1,12 @@
-package com.base.a;
+package com.base.a.Kitchen;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
+import com.base.a.AppCore.AppConfig;
+import com.base.a.AppCore.MultipleTasksDecomposer;
+import com.base.a.AppCore.OneTaskDecomposer;
+import com.base.a.AppCore.Task;
+
+
 import java.util.*;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class Kitchen {
     private KitchenFacade kitchenFacade;

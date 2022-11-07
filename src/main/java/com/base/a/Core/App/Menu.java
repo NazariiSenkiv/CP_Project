@@ -1,5 +1,6 @@
-package com.base.a;
+package com.base.a.AppCore;
 
+import com.base.a.Kitchen.Pizza;
 import com.base.a.Parser.JsonPizzaFileParser;
 
 import java.util.ArrayList;
