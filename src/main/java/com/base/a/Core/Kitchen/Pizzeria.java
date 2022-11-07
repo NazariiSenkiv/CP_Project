@@ -1,10 +1,10 @@
-package com.base.a.Kitchen;
+package com.base.a.Core.Kitchen;
 
-import com.base.a.Client.Client;
-import com.base.a.Client.ClientAcceptor;
-import com.base.a.Order.Order;
-import com.base.a.AppCore.PaydeskManager;
-import com.base.a.AppCore.WaitingRoom;
+import com.base.a.Core.Client.Client;
+import com.base.a.Core.Client.ClientAcceptor;
+import com.base.a.Core.Order.Order;
+import com.base.a.Core.App.PaydeskManager;
+import com.base.a.Core.App.WaitingRoom;
 
 /**
  * Pizzeria is a class that is the
@@ -43,5 +43,13 @@ public class Pizzeria implements ClientAcceptor {
 
     public void sendOrderToKitchen(Order order) {
         kitchenFacade.acceptOrder(order);
+    }
+
+    public final PaydeskManager getPaydeskManager() {
+        return paydeskManager;
+    }
+
+    public final WaitingRoom getWaitingRoom() {
+        return waitingRoom;
     }
 }

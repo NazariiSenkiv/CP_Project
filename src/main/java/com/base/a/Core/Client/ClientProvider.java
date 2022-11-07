@@ -1,8 +1,8 @@
-package com.base.a.Client;
+package com.base.a.Core.Client;
 
-import com.base.a.AppCore.AppConfig;
-import com.base.a.Order.OrderGenerator;
-import com.base.a.Parser.JsonNameFileParser;
+import com.base.a.Core.App.AppConfig;
+import com.base.a.Core.Order.OrderGenerator;
+import com.base.a.Core.Parser.JsonNameFileParser;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,8 +37,10 @@ public class ClientProvider {
     /**
      * Provides the client to the next system
      * */
-    public void provideClient() {
+    public Client provideClient() {
         var client = generateClient();
         clientAcceptor.acceptClient(client);
+
+        return client;
     }
 }

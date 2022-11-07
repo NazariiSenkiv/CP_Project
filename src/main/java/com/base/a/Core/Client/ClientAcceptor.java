@@ -1,4 +1,4 @@
-package com.base.a.Client;
+package com.base.a.Core.Client;
 
 /**
  * Interface for subsystems

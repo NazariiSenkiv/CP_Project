@@ -1,6 +1,6 @@
-package com.base.a.Client;
+package com.base.a.Core.Client;
 
-import com.base.a.Order.Order;
+import com.base.a.Core.Order.Order;
 
 import java.time.LocalDateTime;
 

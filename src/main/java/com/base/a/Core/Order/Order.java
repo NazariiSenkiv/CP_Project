@@ -1,6 +1,6 @@
-package com.base.a.Order;
+package com.base.a.Core.Order;
 
-import com.base.a.Kitchen.Pizza;
+import com.base.a.Core.Kitchen.Pizza;
 
 import java.util.HashMap;
 import java.util.Map;

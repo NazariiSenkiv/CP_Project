@@ -1,8 +1,8 @@
-package com.base.a.Kitchen;
+package com.base.a.Core.Kitchen;
 
-import com.base.a.Order.Order;
-import com.base.a.Order.OrdersCollector;
-import com.base.a.Order.OrdersUnpacker;
+import com.base.a.Core.Order.Order;
+import com.base.a.Core.Order.OrdersCollector;
+import com.base.a.Core.Order.OrdersUnpacker;
 
 /**
  * Communication layer between kitchen and pizzeria
@@ -39,6 +39,10 @@ public class KitchenFacade {
 
     public void update() {
         kitchen.update();
+    }
+
+    public Kitchen getKitchen() {
+        return kitchen;
     }
 
     public void passPizza(Pizza pizza) {

@@ -1,7 +1,7 @@
-package com.base.a.Kitchen;
+package com.base.a.Core.Kitchen;
 
-import com.base.a.Parser.JsonNameFileParser;
-import com.base.a.AppCore.Task;
+import com.base.a.Core.Parser.JsonNameFileParser;
+import com.base.a.Core.App.Task;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -14,6 +14,8 @@ public class Chief {
     private Kitchen kitchen;
     private Task currentTask;
 
+    private boolean suspended;
+
     private LocalTime taskEndTime = LocalTime.now();
 
     public Chief(Kitchen kitchen) {
@@ -25,8 +27,16 @@ public class Chief {
         name = chiefNamesPool.get(random.nextInt(chiefNamesPool.size()));
     }
 
+    public void suspend() {
+        suspended = true;
+    }
+
+    public void enable() {
+        suspended = false;
+    }
+
     public void update() {
-        if (LocalTime.now().compareTo(taskEndTime) >= 0) {
+        if (LocalTime.now().compareTo(taskEndTime) >= 0 && !suspended) {
             if (currentTask != null) {
                 currentTask.complete();
                 currentTask = null;
@@ -50,4 +60,17 @@ public class Chief {
         currentTask = task;
         taskEndTime = now.plusSeconds(task.getSecondsToComplete());
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Task getCurrentTask() {
+        return currentTask;
+    }
+
+    public LocalTime getTaskEndTime() {
+        return taskEndTime;
+    }
+
 }

@@ -1,8 +1,8 @@
-package com.base.a.AppCore;
+package com.base.a.Core.App;
 
-import com.base.a.Kitchen.Kitchen;
-import com.base.a.Kitchen.Pizza;
-import com.base.a.Kitchen.PizzaTasksDecomposer;
+import com.base.a.Core.Kitchen.Kitchen;
+import com.base.a.Core.Kitchen.Pizza;
+import com.base.a.Core.Kitchen.PizzaTasksDecomposer;
 
 import java.util.List;
 

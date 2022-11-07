@@ -1,9 +1,9 @@
-package com.base.a.Kitchen;
+package com.base.a.Core.Kitchen;
 
-import com.base.a.AppCore.AppConfig;
-import com.base.a.AppCore.MultipleTasksDecomposer;
-import com.base.a.AppCore.OneTaskDecomposer;
-import com.base.a.AppCore.Task;
+import com.base.a.Core.App.AppConfig;
+import com.base.a.Core.App.MultipleTasksDecomposer;
+import com.base.a.Core.App.OneTaskDecomposer;
+import com.base.a.Core.App.Task;
 
 
 import java.util.*;
@@ -12,7 +12,6 @@ public class Kitchen {
     private KitchenFacade kitchenFacade;
     private List<Task> tasks;
     private PizzaTasksDecomposer pizzaTasksDecomposer;
-
     private List<Chief> chiefs;
 
     public Kitchen(KitchenFacade kitchenFacade) {
@@ -29,6 +28,10 @@ public class Kitchen {
             case SINGLE -> pizzaTasksDecomposer = new OneTaskDecomposer();
             case CONVEYOR -> pizzaTasksDecomposer = new MultipleTasksDecomposer();
         }
+    }
+
+    public List<Chief> getChiefs() {
+        return chiefs;
     }
 
     public synchronized void addPizzas(List<Pizza> pizzaList) {

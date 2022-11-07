@@ -1,4 +1,4 @@
-package com.base.a.AppCore;
+package com.base.a.Core.App;
 
 public class AppConfig {
     private static volatile AppConfig instance;

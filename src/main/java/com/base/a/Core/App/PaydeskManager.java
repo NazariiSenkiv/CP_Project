@@ -1,8 +1,8 @@
-package com.base.a.AppCore;
+package com.base.a.Core.App;
 
-import com.base.a.Client.Client;
-import com.base.a.Kitchen.Pizzeria;
-import com.base.a.Order.Order;
+import com.base.a.Core.Client.Client;
+import com.base.a.Core.Kitchen.Pizzeria;
+import com.base.a.Core.Order.Order;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -58,5 +58,9 @@ public class PaydeskManager {
 
     public void sendOrderToKitchen(Order order) {
         pizzeria.sendOrderToKitchen(order);
+    }
+
+    public List<Paydesk> getPaydesks() {
+        return paydesks;
     }
 }

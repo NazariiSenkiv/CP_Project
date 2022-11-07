@@ -1,6 +1,6 @@
-package com.base.a.Parser;
+package com.base.a.Core.Parser;
 
-import com.base.a.Kitchen.Pizza;
+import com.base.a.Core.Kitchen.Pizza;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

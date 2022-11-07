@@ -1,4 +1,4 @@
-package com.base.a.Parser;
+package com.base.a.Core.Parser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;

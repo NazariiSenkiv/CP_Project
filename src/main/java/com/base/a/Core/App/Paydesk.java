@@ -1,6 +1,6 @@
-package com.base.a.AppCore;
+package com.base.a.Core.App;
 
-import com.base.a.Client.Client;
+import com.base.a.Core.Client.Client;
 
 import java.time.LocalTime;
 
