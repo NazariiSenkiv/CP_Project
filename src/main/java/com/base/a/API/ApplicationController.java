@@ -65,16 +65,16 @@ public class ApplicationController {
     private void pizzeriaProcedure() {
         while (true) {
             pizzeria.update();
-            data.setPaydeskList(pizzeria.getPaydeskManager().getPaydesks());
-            data.setWaitingClient(pizzeria.getWaitingRoom().getClients());
-            data.setCompletedOrders(pizzeria.getWaitingRoom().getCompletedOrder());
+            data.setPaydeskList(new ArrayList<>(pizzeria.getPaydeskManager().getPaydesks()));
+            data.setWaitingClient(new ArrayList<>(pizzeria.getWaitingRoom().getClients()));
+            data.setCompletedOrders(new ArrayList<>(pizzeria.getWaitingRoom().getCompletedOrder()));
         }
     }
 
     private void kitchenProcedure() {
         while (true) {
             kitchen.update();
-            data.setChiefInfoList(kitchen.getKitchen().getChiefs());
+            data.setChiefInfoList(new ArrayList<>(kitchen.getKitchen().getChiefs()));
         }
     }
 
