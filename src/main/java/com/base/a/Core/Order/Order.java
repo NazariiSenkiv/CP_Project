@@ -35,7 +35,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return pizzas.entrySet().stream().map(e-> "["+ e.getKey().getName() + "(" + e.getValue() + ")" +"]")
-                .collect(Collectors.joining(", "));
+        return "{ " + pizzas.entrySet().stream().map(e-> "["+ e.getKey().getName() + "(" + e.getValue() + ")" +"]")
+                .collect(Collectors.joining(", ")) + " }";
     }
 }

@@ -13,6 +13,7 @@ public class WaitingRoom {
 
     public WaitingRoom() {
         clients = Collections.synchronizedList(new ArrayList<>());
+        completedOrder = Collections.synchronizedList(new ArrayList<>());
     }
 
     public void addClient(Client client) {
