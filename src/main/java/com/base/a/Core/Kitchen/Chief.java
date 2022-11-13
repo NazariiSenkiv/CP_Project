@@ -9,10 +9,13 @@ import java.util.Random;
 
 public class Chief {
     private static List<String> chiefNamesPool;
+    private static int lastId = 0;
 
     private String name;
     private Kitchen kitchen;
     private Task currentTask;
+
+    private int id;
 
     private boolean suspended;
 
@@ -25,6 +28,8 @@ public class Chief {
 
         Random random = new Random();
         name = chiefNamesPool.get(random.nextInt(chiefNamesPool.size()));
+
+        id = lastId++;
     }
 
     public void suspend() {
@@ -73,4 +78,7 @@ public class Chief {
         return taskEndTime;
     }
 
+    public int getId() {
+        return id;
+    }
 }
