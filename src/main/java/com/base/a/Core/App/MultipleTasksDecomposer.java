@@ -11,11 +11,11 @@ public class MultipleTasksDecomposer extends PizzaTasksDecomposer {
     public List<Task> decompose(Pizza p, Kitchen kitchen) {
         int taskTime = AppConfig.itemCookingMinTime > 3 ? AppConfig.itemCookingMinTime / 3 : 1;
 
-        var kneadDoughTask = new SimpleTask("knead the dough", taskTime);
-        var prepareIngredientsTask = new SimpleTask("prepare the ingredients\n", taskTime);
+        var kneadDoughTask = new SimpleTask("knead the dough", taskTime, p);
+        var prepareIngredientsTask = new SimpleTask("prepare the ingredients\n", taskTime, p);
 
         var bakePizzaTask =
-                new CompositeTask("bake the pizza", taskTime, List.of(kneadDoughTask, prepareIngredientsTask));
+                new CompositeTask("bake the pizza", taskTime, List.of(kneadDoughTask, prepareIngredientsTask), p);
 
         var completePizzaTask =
                 new CompleteTask("complete pizza", 0, List.of(bakePizzaTask), kitchen, p);
