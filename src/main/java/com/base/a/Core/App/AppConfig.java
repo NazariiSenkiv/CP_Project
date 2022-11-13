@@ -12,6 +12,8 @@ public class AppConfig {
 
     public static ChiefWorkMode chiefWorkMode = ChiefWorkMode.CONVEYOR;
 
+    public static OrderGenerationStrategy orderGenerationStrategy = OrderGenerationStrategy.RANDOM_ORDER;
+
     private AppConfig() {
 
     }

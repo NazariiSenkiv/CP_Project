@@ -1,5 +1,6 @@
 package com.base.a.Core.Order;
 
+import com.base.a.Core.App.AppConfig;
 import com.base.a.Core.App.Menu;
 import com.base.a.Core.Kitchen.Pizza;
 
@@ -118,5 +119,23 @@ public class OrderGenerator {
         }
 
         return createSuperComplexOrder(); // probability 10%
+    }
+
+    public Order createOrder() {
+        switch (AppConfig.orderGenerationStrategy) {
+            case SIMPLE_ORDER -> {
+                return createSimpleOrder();
+            }
+            case COMPLEX_ORDER -> {
+                return createComplexOrder();
+            }
+            case SUPER_COMPLEX_ORDER -> {
+                return createSuperComplexOrder();
+            }
+            case RANDOM_ORDER -> {
+                return createRandomOrder();
+            }
+            default -> { return createRandomOrder(); }
+        }
     }
 }

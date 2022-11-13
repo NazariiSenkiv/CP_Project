@@ -68,6 +68,9 @@ public class ApplicationController {
             data.setPaydeskList(new ArrayList<>(pizzeria.getPaydeskManager().getPaydesks()));
             data.setWaitingClient(new ArrayList<>(pizzeria.getWaitingRoom().getClients()));
             data.setCompletedOrders(new ArrayList<>(pizzeria.getWaitingRoom().getCompletedOrder()));
+
+            // TODO: remove
+            System.out.println("Completed order: " + data.getCompletedOrders());
         }
     }
 

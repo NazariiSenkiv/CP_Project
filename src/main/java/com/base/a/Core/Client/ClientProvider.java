@@ -30,7 +30,7 @@ public class ClientProvider {
     }
 
     public Client generateClient() {
-        var order = orderGenerator.createRandomOrder();
+        var order = orderGenerator.createOrder();
         return new Client(order, getRandomName(), LocalDateTime.now());
     }
 
