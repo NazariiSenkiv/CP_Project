@@ -1,8 +1,10 @@
 package com.base.a;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class OrderGenerator {
+    private static final Logger log = Logger.getLogger(OrderGenerator.class.getName());
     private static int nextId = 0;
     private Pizza getRandomPizza() {
         var pizzasList = Menu.getInstance().getPizzas();

@@ -1,8 +1,10 @@
 package com.base.a;
 
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class OrderBox {
+    private static final Logger log = Logger.getLogger(OrderBox.class.getName());
     private int orderId;
     Map<Pizza, Integer> pizzasToComplete;
 

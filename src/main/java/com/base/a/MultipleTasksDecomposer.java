@@ -2,8 +2,10 @@ package com.base.a;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class MultipleTasksDecomposer extends PizzaTasksDecomposer {
+    private static final Logger log = Logger.getLogger(MultipleTasksDecomposer.class.getName());
     @Override
     public List<Task> decompose(Pizza p, Kitchen kitchen) {
         int taskTime = AppConfig.itemCookingMinTime > 3 ? AppConfig.itemCookingMinTime / 3 : 1;

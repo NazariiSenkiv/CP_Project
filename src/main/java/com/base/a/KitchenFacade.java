@@ -1,7 +1,9 @@
 package com.base.a;
 
-public class KitchenFacade {
+import java.util.logging.Logger;
 
+public class KitchenFacade {
+    private static final Logger log = Logger.getLogger(KitchenFacade.class.getName());
     private Pizzeria pizzeria;
     private OrdersCollector ordersCollector;
     private OrdersUnpacker ordersUnpacker;

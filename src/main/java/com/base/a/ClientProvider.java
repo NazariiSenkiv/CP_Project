@@ -5,8 +5,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ClientProvider {
+    private static final Logger log = Logger.getGlobal();
     private OrderGenerator orderGenerator;
     private List<String> namesPool;
     private ClientAcceptor clientAcceptor;
@@ -70,9 +73,7 @@ public class ClientProvider {
 
     public void provideClient() {
         var client = generateClient();
-
-        // TODO: remove this
-        System.out.println("["+ LocalTime.now() +"]"+"Spawned client: " + client.getName()
+        log.log(Level.FINE,"Spawned client: " + client.getName()
         + ", order: " + client.getOrder());
 
         clientAcceptor.acceptClient(client);

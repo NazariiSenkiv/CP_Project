@@ -5,9 +5,12 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class PaydeskManager {
+    private static final Logger log = Logger.getLogger(PaydeskManager.class.getName());
     private Pizzeria pizzeria;
     private final List<Paydesk> paydesks;
     private final LinkedBlockingQueue<Client> waitingClients;
@@ -21,13 +24,14 @@ public class PaydeskManager {
         for (int i = 0; i < AppConfig.paydesksCount; ++i) {
             paydesks.add(new Paydesk(this, i+1));
         }
+        log.log(Level.INFO, "new paydesk manager created");
     }
 
     public void addClient(Client client) {
         try {
             waitingClients.put(client);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);//TODO: log error
+            log.log(Level.SEVERE, e.toString(), e);
         }
     }
 
@@ -37,23 +41,13 @@ public class PaydeskManager {
                 paydesk.serveClient(waitingClients.take());
             }
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);//TODO: log error
+            log.log(Level.SEVERE, e.toString(), e);
         }
     }
-
-    // TODO: remove
-    private LocalTime lastOutputTime = LocalTime.now();
-    //
     public void updatePaydesks() {
-        // TODO: remove
-        if (ChronoUnit.SECONDS.between(lastOutputTime, LocalTime.now()) >= 1) {
-            lastOutputTime = LocalTime.now();
-            System.out.println("Waiting queue: " + waitingClients.stream().map(Client::getName).collect(Collectors.joining(", ")));
-        }
-        //
-
         for (var paydesk : paydesks) {
             paydesk.update();
+            log.log(Level.FINEST,"Waiting queue: " + waitingClients.stream().map(Client::getName).collect(Collectors.joining(", ")));
         }
     }
 

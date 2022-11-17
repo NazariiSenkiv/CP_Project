@@ -2,8 +2,10 @@ package com.base.a;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class OrdersCollector {
+    private static final Logger log = Logger.getLogger(OrdersCollector.class.getName());
     private KitchenFacade kitchenFacade;
     private List<OrderBox> orderBoxes;
 

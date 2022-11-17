@@ -1,6 +1,10 @@
 package com.base.a;
 
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 public class Pizzeria implements ClientAcceptor {
+    private static final Logger log = Logger.getGlobal();
     private final PaydeskManager paydeskManager;
     private KitchenFacade kitchenFacade;
     private final WaitingRoom waitingRoom;
@@ -8,10 +12,12 @@ public class Pizzeria implements ClientAcceptor {
     public Pizzeria() {
         paydeskManager = new PaydeskManager(this);
         waitingRoom = new WaitingRoom();
+        log.info("new pizzeria instance created");
     }
 
     public void setKitchenFacade(KitchenFacade kitchenFacade) {
         this.kitchenFacade = kitchenFacade;
+        log.info("kitchen facade was added");
     }
 
     @Override

@@ -2,8 +2,10 @@ package com.base.a;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Menu {
+    private static final Logger log = Logger.getLogger(Menu.class.getName());
     private static Menu instance;
     private List<Pizza> pizzas = null;
 

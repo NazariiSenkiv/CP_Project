@@ -8,8 +8,11 @@ import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JsonPizzaFileParser {
+    private static final Logger log = Logger.getLogger(JsonPizzaFileParser.class.getName());
     public static List<Pizza> parseFile(String filePath) {
         List<Pizza> pizzas = new ArrayList<>();
 
@@ -24,7 +27,7 @@ public class JsonPizzaFileParser {
                 pizzas.add(Pizza.JsonPizzaParser.parse(pizzaJsonObject));
             }
         } catch (Exception e) {
-            System.out.println("File parse error in class HouseholdApplianceJsonParser, " + e);
+            log.log(Level.SEVERE, "File parse error in class HouseholdApplianceJsonParser, " + e);
         }
 
         return pizzas;

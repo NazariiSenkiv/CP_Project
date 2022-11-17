@@ -2,9 +2,11 @@ package com.base.a;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Order {
+    private static final Logger log = Logger.getLogger(Order.class.getName());
     private int id;
     private Map<Pizza, Integer> pizzas;
 

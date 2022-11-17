@@ -4,8 +4,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Chief {
+
+    private static final Logger log = Logger.getGlobal();
     private String name;
     private Kitchen kitchen;
     private Task currentTask;
@@ -18,17 +22,14 @@ public class Chief {
         fillChiefNamesPool();
         Random random = new Random();
         name = chiefNamesPool.get(random.nextInt(chiefNamesPool.size()));
+        log.log(Level.FINE, "new Chief instance created : " + name);
     }
 
     public void update() {
         if (LocalTime.now().compareTo(taskEndTime) >= 0) {
             if (currentTask != null) {
                 currentTask.complete();
-
-                // TODO: remove
-                System.out.println("Chief " + name + " completed task " + currentTask.getName() + "["+LocalTime.now()+"]");
-                //
-
+                log.log(Level.FINE, "Chief " + name + " completed task " + currentTask.getName());
                 currentTask = null;
             }
 
@@ -46,9 +47,7 @@ public class Chief {
         }
 
         var now = LocalTime.now();
-        // TODO: remove
-        System.out.println("Chief " + name + " took task " + task.getName());
-        //
+        log.log(Level.FINE, "Chief " + name + " took task " + task.getName());
 
         currentTask = task;
         taskEndTime = now.plusSeconds(task.getSecondsToComplete());
