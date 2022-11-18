@@ -32,14 +32,21 @@ public class UpdateListClientsTimer extends TimerTask {
                         return new ClientDTO(e.getName(), e.getOrder().getId(), "В черзі на касу", e);
                     }).toList();
 
-            var allClients = data.getPaydeskList().stream()
-                    .map((e) -> {
-                        return new ClientDTO(e.getServingClient().getName(), e.getServingClient().getOrder().getId(), "Замовляє на касі", e.getServingClient());
-                    }).toList();
+            try {
+                var allClients = data.getPaydeskList().stream()
+                        .filter((e) -> e.getServingClient() != null )
+                        .map((e) -> {
+                            return new ClientDTO(e.getServingClient().getName(), e.getServingClient().getOrder().getId(), "Замовляє на касі", e.getServingClient());
+                        }).toList();
 
+                clients.addAll(allClients);
+            } catch (NullPointerException e) {
+                System.out.println("There is no client at paydesks...");
+            } catch (Exception e) {
+                System.out.println("Some error occurred...");
+            }
             clients.addAll(waitingClientList);
             clients.addAll(waitingClientsInPaydesk);
-            clients.addAll(allClients);
             clients.sort(Comparator.comparing(ClientDTO::getIdOrder));
             this.page2Controller.setClientsForTable(clients);
         }
