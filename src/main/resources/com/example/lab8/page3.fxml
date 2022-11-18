@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Spinner?>
+<Pane fx:controller="com.example.lab8.Page3Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="table_chiefs" layoutX="14.0" layoutY="61.0" prefHeight="526.0" prefWidth="595.0">
+         <!--<columns>
+            <TableColumn prefWidth="160.800048828125" sortable="false" text="Кухар" />
+            <TableColumn prefWidth="139.99993896484375" text="Піца" />
+            <TableColumn prefWidth="128.79998779296875" text="Дія" />
+            <TableColumn prefWidth="161.79998779296875" text="Статус" />
+         </columns>-->
+      </TableView>
+      <Button fx:id="button_stop" defaultButton="true" layoutX="648.0" layoutY="192.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="122.0" style="-fx-background-color: lightBlue;" text="Призупинити">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="button_go" defaultButton="true" layoutX="648.0" layoutY="245.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="122.0" style="-fx-background-color: lightBlue;" text="Відновити">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_mode" layoutX="648.0" layoutY="85.0" text="Режим роботи:">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+
+      <Spinner fx:id="spinner_id" min="1" max="10" amountToStepBy="1" blendMode="SRC_ATOP" layoutX="648.0" layoutY="152.0" prefHeight="25.0" prefWidth="122.0" />
+      <Label layoutX="648.0" layoutY="135.0" text="Номер кухаря">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+
+      <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Button fx:id="button_kasa" defaultButton="true" layoutX="128.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="88.0" style="-fx-background-color: white;" text="Каса">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" layoutX="562.0" layoutY="11.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="88.0" style="-fx-background-color: white;" text="Кухня" textFill="#9bb4e0">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow height="20.0" offsetY="1.0" radius="10.75" spread="0.08" width="25.0">
+               <color>
+                  <Color red="0.6431372761726379" green="0.6117647290229797" blue="0.6117647290229797" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+   </children>
+</Pane>

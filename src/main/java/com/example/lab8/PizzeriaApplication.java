@@ -7,12 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class PizzeriaApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("page1.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        var resources = Resources.getInstance();
+        resources.addResource(PizzeriaApplication.class.getResource("page1.fxml"));
+        resources.addResource(PizzeriaApplication.class.getResource("page2.fxml"));
+        resources.addResource(PizzeriaApplication.class.getResource("page3.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(resources.getResource((0)));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("Pizzeria");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,16 +1,15 @@
 package com.example.lab8;
 
 import com.API.ApplicationController;
-import javafx.collections.FXCollections;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TimerTask;
 
-public class UpdateListTimer extends TimerTask {
+public class UpdateListClientsTimer extends TimerTask {
     private Page2Controller page2Controller;
-    public UpdateListTimer (Page2Controller page2Controller) {
+    public UpdateListClientsTimer(Page2Controller page2Controller) {
         super();
         this.page2Controller = page2Controller;
     }
