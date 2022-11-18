@@ -1,12 +1,12 @@
 [
   {
-    "name": "Test Pizza",
+    "name": "Pancetta Pizza",
     "weight": 350.0,
     "price": 205.99,
     "components": ["sausage", "cheese", "olives"]
   },
   {
-    "name": "Test Pizza 2",
+    "name": "Prosciutto e fungi Pizza",
     "weight": 300.0,
     "price": 250.99,
     "components": ["chicken", "cheese", "olives", "mushrooms"]
