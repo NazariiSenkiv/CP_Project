@@ -6,6 +6,9 @@ import com.Core.Order.Order;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * PaydeskManager is a class that controls
@@ -13,6 +16,8 @@ import java.util.concurrent.LinkedBlockingQueue;
  * client to waiting rooms, orders to kitchen and updates the states of the paydesks.
  * */
 public class PaydeskManager {
+    private static final Logger log = Logger.getLogger(PaydeskManager.class.getName());
+
     private Pizzeria pizzeria;
     private final List<Paydesk> paydesks;
     private final LinkedBlockingQueue<Client> waitingClients;
@@ -26,13 +31,15 @@ public class PaydeskManager {
         for (int i = 0; i < AppConfig.paydesksCount; ++i) {
             paydesks.add(new Paydesk(this, i+1));
         }
+
+        log.log(Level.INFO, "new paydesk manager created");
     }
 
     public void addClient(Client client) {
         try {
             waitingClients.put(client);
         } catch (InterruptedException e) {
-            System.out.println("Client isn't added");
+            log.log(Level.SEVERE, e.toString(), e);
         }
     }
 
@@ -42,13 +49,14 @@ public class PaydeskManager {
                 paydesk.serveClient(waitingClients.take());
             }
         } catch (InterruptedException e) {
-            System.out.println("Paydesk updating error");
+            log.log(Level.SEVERE, e.toString(), e);
         }
     }
 
     public void updatePaydesks() {
         for (var paydesk : paydesks) {
             paydesk.update();
+            log.log(Level.FINEST,"Waiting queue: " + waitingClients.stream().map(Client::getName).collect(Collectors.joining(", ")));
         }
     }
 

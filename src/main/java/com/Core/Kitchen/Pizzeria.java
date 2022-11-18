@@ -6,11 +6,15 @@ import com.Core.Order.Order;
 import com.Core.App.PaydeskManager;
 import com.Core.App.WaitingRoom;
 
+import java.util.logging.Logger;
+
 /**
  * Pizzeria is a class that is the
  * communication layer between the subsystems
  * */
 public class Pizzeria implements ClientAcceptor {
+    private static final Logger log = Logger.getGlobal();
+
     private final PaydeskManager paydeskManager;
     private KitchenFacade kitchenFacade;
     private final WaitingRoom waitingRoom;
@@ -18,10 +22,13 @@ public class Pizzeria implements ClientAcceptor {
     public Pizzeria() {
         paydeskManager = new PaydeskManager(this);
         waitingRoom = new WaitingRoom();
+
+        log.info("new pizzeria instance created");
     }
 
     public void setKitchenFacade(KitchenFacade kitchenFacade) {
         this.kitchenFacade = kitchenFacade;
+        log.info("kitchen facade was added");
     }
 
     @Override

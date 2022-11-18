@@ -3,8 +3,12 @@ package com.Core.App;
 import com.Core.Client.Client;
 
 import java.time.LocalTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Paydesk {
+    private static final Logger log = Logger.getLogger(Paydesk.class.getName());
+
     private int number;
     private PaydeskManager paydeskManager;
     private Client servingClient;
@@ -32,6 +36,8 @@ public class Paydesk {
 
         LocalTime orderingStartTime = LocalTime.now();
 
+        log.log(Level.FINE, "Accepted client: " + servingClient.getName()+", time:"+ orderingStartTime);
+
         this.servingClient = servingClient;
         orderingEndTime = orderingStartTime.plusSeconds(AppConfig.orderTimeInSeconds); //TODO: add random deviation
     }
@@ -43,6 +49,9 @@ public class Paydesk {
     public synchronized void update() {
         if (LocalTime.now().compareTo(orderingEndTime) >= 0) {
             if (servingClient != null) {
+                log.log(Level.FINE, "Released client: " + servingClient.getName()+", time:"+ LocalTime.now());
+
+
                 paydeskManager.sendClientToWaitingRoom(servingClient);
                 paydeskManager.sendOrderToKitchen(servingClient.getOrder());
 

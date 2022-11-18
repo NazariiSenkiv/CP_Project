@@ -7,8 +7,11 @@ import com.Core.App.Task;
 
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Kitchen {
+    private static final Logger log = Logger.getLogger(Kitchen.class.getName());
+
     private KitchenFacade kitchenFacade;
     private List<Task> tasks;
     private PizzaTasksDecomposer pizzaTasksDecomposer;

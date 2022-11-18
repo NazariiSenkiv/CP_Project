@@ -6,7 +6,7 @@ public class AppConfig {
     public static String jsonNamesPath = "names.json";
     public static int paydesksCount = 4;
     public static int chiefsCount = 4;
-    public static int orderTimeInSeconds = 16;
+    public static int orderTimeInSeconds = 10;
     public static int clientSpawnDelaySeconds = 10;
     public static int itemCookingMinTime = 2;
     public static int numberOfPizzas = 4;

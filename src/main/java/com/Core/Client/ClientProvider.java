@@ -7,12 +7,16 @@ import com.Core.Parser.JsonNameFileParser;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * ClientProvider is a class that generates random client
  * and provides it to the next system that is passed in constructor
  * */
 public class ClientProvider {
+    private static final Logger log = Logger.getGlobal();
+
     private OrderGenerator orderGenerator;
     private List<String> namesPool;
     private ClientAcceptor clientAcceptor;
@@ -39,6 +43,10 @@ public class ClientProvider {
      * */
     public Client provideClient() {
         var client = generateClient();
+
+        log.log(Level.FINE,"Spawned client: " + client.getName()
+                + ", order: " + client.getOrder());
+
         clientAcceptor.acceptClient(client);
 
         return client;
